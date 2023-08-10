@@ -8,8 +8,7 @@ struct AppConstant {
         get { UserDefaults.standard.value(forKey: "locale-setting") as? String ?? "en-us" }
         set { UserDefaults.standard.setValue(newValue, forKey: "locale-setting") }
     }
-    
-    static var deviceName = UIDevice.current.name
+    static var modelName: String?
     
     static var IPAddress: String? {
         get { UserDefaults.standard.value(forKey: "IPAddress") as? String }

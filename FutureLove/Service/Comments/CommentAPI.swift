@@ -12,5 +12,12 @@ class CommentAPI: BaseAPI<CommentsServiceConfiguration> {
             completionHandler(result)
         }
     }
+    func getSearchComment(word: String,
+                          completionHandler: @escaping (Result<HomeModel, ServiceError>) -> Void) {
+        fetchData(configuration: .getSearchComment(word: word),
+                  responseType: HomeModel.self) { result in
+            completionHandler(result)
+        }
+    }
 }
 

@@ -52,6 +52,12 @@
 		6D39AEDB2A75930600C63E72 /* ProfileServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D39AEDA2A75930600C63E72 /* ProfileServiceConfiguration.swift */; };
 		6D39AEDF2A75992700C63E72 /* RecentCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D39AEDD2A75992700C63E72 /* RecentCommentTableViewCell.swift */; };
 		6D39AEE02A75992700C63E72 /* RecentCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D39AEDE2A75992700C63E72 /* RecentCommentTableViewCell.xib */; };
+		6D466CF02A8210CC008F497B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466CEE2A8210CC008F497B /* SearchViewController.swift */; };
+		6D466CF12A8210CC008F497B /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D466CEF2A8210CC008F497B /* SearchViewController.xib */; };
+		6D466CF52A8219CE008F497B /* UserEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466CF32A8219CD008F497B /* UserEventViewController.swift */; };
+		6D466CF62A8219CE008F497B /* UserEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D466CF42A8219CD008F497B /* UserEventViewController.xib */; };
+		6D4ED84D2A8350BC00DE9612 /* ChangerAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4ED84B2A8350BC00DE9612 /* ChangerAvatarViewController.swift */; };
+		6D4ED84E2A8350BC00DE9612 /* ChangerAvatarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D4ED84C2A8350BC00DE9612 /* ChangerAvatarViewController.xib */; };
 		6DFE9D012A6E5C7D000BB558 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D002A6E5C7D000BB558 /* AppDelegate.swift */; };
 		6DFE9D032A6E5C7D000BB558 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D022A6E5C7D000BB558 /* SceneDelegate.swift */; };
 		6DFE9D0A2A6E5C80000BB558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DFE9D092A6E5C80000BB558 /* Assets.xcassets */; };
@@ -155,6 +161,12 @@
 		6D39AEDA2A75930600C63E72 /* ProfileServiceConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileServiceConfiguration.swift; sourceTree = "<group>"; };
 		6D39AEDD2A75992700C63E72 /* RecentCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCommentTableViewCell.swift; sourceTree = "<group>"; };
 		6D39AEDE2A75992700C63E72 /* RecentCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentCommentTableViewCell.xib; sourceTree = "<group>"; };
+		6D466CEE2A8210CC008F497B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6D466CEF2A8210CC008F497B /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		6D466CF32A8219CD008F497B /* UserEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventViewController.swift; sourceTree = "<group>"; };
+		6D466CF42A8219CD008F497B /* UserEventViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserEventViewController.xib; sourceTree = "<group>"; };
+		6D4ED84B2A8350BC00DE9612 /* ChangerAvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangerAvatarViewController.swift; sourceTree = "<group>"; };
+		6D4ED84C2A8350BC00DE9612 /* ChangerAvatarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangerAvatarViewController.xib; sourceTree = "<group>"; };
 		6DFE9CFD2A6E5C7D000BB558 /* FutureLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FutureLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DFE9D002A6E5C7D000BB558 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DFE9D022A6E5C7D000BB558 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -265,6 +277,8 @@
 		6D07E3062A70BB11005D960A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				6D4ED84A2A8350A200DE9612 /* ChangeAvatar */,
+				6D466CF22A82199A008F497B /* UserEvent */,
 				6D39AEDC2A75990E00C63E72 /* Cell */,
 				6D14543E2A7279BE0020D646 /* ProfileViewController.swift */,
 				6D14543F2A7279BE0020D646 /* ProfileViewController.xib */,
@@ -391,6 +405,33 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		6D466CED2A82107B008F497B /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				6D466CEE2A8210CC008F497B /* SearchViewController.swift */,
+				6D466CEF2A8210CC008F497B /* SearchViewController.xib */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		6D466CF22A82199A008F497B /* UserEvent */ = {
+			isa = PBXGroup;
+			children = (
+				6D466CF32A8219CD008F497B /* UserEventViewController.swift */,
+				6D466CF42A8219CD008F497B /* UserEventViewController.xib */,
+			);
+			path = UserEvent;
+			sourceTree = "<group>";
+		};
+		6D4ED84A2A8350A200DE9612 /* ChangeAvatar */ = {
+			isa = PBXGroup;
+			children = (
+				6D4ED84B2A8350BC00DE9612 /* ChangerAvatarViewController.swift */,
+				6D4ED84C2A8350BC00DE9612 /* ChangerAvatarViewController.xib */,
+			);
+			path = ChangeAvatar;
+			sourceTree = "<group>";
+		};
 		6DFE9CF42A6E5C7D000BB558 = {
 			isa = PBXGroup;
 			children = (
@@ -438,6 +479,7 @@
 				6D39AECA2A73BA4900C63E72 /* SlideMenu */,
 				6D39AEC52A73B9CB00C63E72 /* DetailEvents */,
 				6DFE9D592A6E7F76000BB558 /* Comments */,
+				6D466CED2A82107B008F497B /* Search */,
 				6DFE9D5A2A6E7F9D000BB558 /* Love */,
 				6D07E3062A70BB11005D960A /* Profile */,
 			);
@@ -713,10 +755,12 @@
 				6DFE9D282A6E6836000BB558 /* RobotoSlab-Black.ttf in Resources */,
 				6D39AECE2A73BA8300C63E72 /* SlideMenuViewController.xib in Resources */,
 				6DFE9D582A6E7EF3000BB558 /* HomeViewController.xib in Resources */,
+				6D466CF62A8219CE008F497B /* UserEventViewController.xib in Resources */,
 				6DFE9D272A6E6836000BB558 /* RobotoSlab-Light.ttf in Resources */,
 				6DFE9D0A2A6E5C80000BB558 /* Assets.xcassets in Resources */,
 				6DFE9D292A6E6836000BB558 /* RobotoSlab-ExtraLight.ttf in Resources */,
 				6DFE9DAF2A6F7364000BB558 /* CommentTableViewCell.xib in Resources */,
+				6D4ED84E2A8350BC00DE9612 /* ChangerAvatarViewController.xib in Resources */,
 				6DFE9D2B2A6E6836000BB558 /* RobotoSlab-Thin.ttf in Resources */,
 				6DFE9D2D2A6E6836000BB558 /* RobotoSlab-Bold.ttf in Resources */,
 				6D1454462A7357790020D646 /* EventViewController.xib in Resources */,
@@ -731,6 +775,7 @@
 				6D07E31B2A70C3E3005D960A /* Template1TBVCell.xib in Resources */,
 				6D39AEE02A75992700C63E72 /* RecentCommentTableViewCell.xib in Resources */,
 				6DFE9D2A2A6E6836000BB558 /* RobotoSlab-ExtraBold.ttf in Resources */,
+				6D466CF12A8210CC008F497B /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,6 +879,7 @@
 				6DFE9D812A6EE663000BB558 /* Configs.swift in Sources */,
 				3D306A342A72C31E00CE4AD0 /* LoadingView.swift in Sources */,
 				6D39AED22A742FD700C63E72 /* SlideMenuTableViewCell.swift in Sources */,
+				6D4ED84D2A8350BC00DE9612 /* ChangerAvatarViewController.swift in Sources */,
 				6D30A5642A7A3E4D00814997 /* Template2TBVCell.swift in Sources */,
 				6DFE9DB42A6F760F000BB558 /* CommentAPI.swift in Sources */,
 				6D39AEDB2A75930600C63E72 /* ProfileServiceConfiguration.swift in Sources */,
@@ -851,11 +897,13 @@
 				6DFE9D032A6E5C7D000BB558 /* SceneDelegate.swift in Sources */,
 				6DFE9DAA2A6F6DF8000BB558 /* UIColor+Extension.swift in Sources */,
 				6DFE9D902A6EE7F4000BB558 /* AppConstant.swift in Sources */,
+				6D466CF52A8219CE008F497B /* UserEventViewController.swift in Sources */,
 				6D07E32F2A70D4CE005D960A /* DetailModel.swift in Sources */,
 				6DFE9DA62A6F6DF8000BB558 /* UITableView+Extension.swift in Sources */,
 				6D07E3382A70F371005D960A /* RegisterServiceConfiguration.swift in Sources */,
 				6DFE9D7A2A6EE248000BB558 /* HomeModel.swift in Sources */,
 				6D07E32D2A70D4C1005D960A /* DetailAPI.swift in Sources */,
+				6D466CF02A8210CC008F497B /* SearchViewController.swift in Sources */,
 				6DFE9DA92A6F6DF8000BB558 /* UIView+Extension.swift in Sources */,
 				6D07E3342A70F331005D960A /* RegisterAPI.swift in Sources */,
 				6D07E31A2A70C3E3005D960A /* Template1TBVCell.swift in Sources */,
@@ -1019,12 +1067,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.futurelove.FutureLove;
+				PRODUCT_BUNDLE_IDENTIFIER = com.futurelove.FutureLovev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1052,12 +1101,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.futurelove.FutureLove;
+				PRODUCT_BUNDLE_IDENTIFIER = com.futurelove.FutureLovev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -59,7 +59,7 @@ class LoveViewController: BaseViewController, SETabItemProvider {
         showCustomeIndicator()
         LoveAPI.shared.getEvents(Link_img1: imageboyLink,
                                  Link_img2: imageGirlLink,
-                                 device_them_su_kien: AppConstant.deviceName,
+                                 device_them_su_kien: AppConstant.modelName ?? "iphone",
                                  ip_them_su_kien: AppConstant.IPAddress.asStringOrEmpty(),
                                  id_user: "\(AppConstant.userId.asStringOrEmpty())",
                                  ten_nam: boyNameTextField.text.asStringOrEmpty(),

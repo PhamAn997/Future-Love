@@ -366,7 +366,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 40 images.
+  /// This `R.image` struct is generated, and contains static references to 41 images.
   struct image {
     /// Image `Template3`.
     static let template3 = Rswift.ImageResource(bundle: R.hostingBundle, name: "Template3")
@@ -394,6 +394,8 @@ struct R: Rswift.Validatable {
     static let icon_send = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_send")
     /// Image `lineco`.
     static let lineco = Rswift.ImageResource(bundle: R.hostingBundle, name: "lineco")
+    /// Image `link`.
+    static let link = Rswift.ImageResource(bundle: R.hostingBundle, name: "link")
     /// Image `logo_love`.
     static let logo_love = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo_love")
     /// Image `logo`.
@@ -537,6 +539,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "lineco", bundle: ..., traitCollection: ...)`
     static func lineco(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.lineco, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "link", bundle: ..., traitCollection: ...)`
+    static func link(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.link, compatibleWith: traitCollection)
     }
     #endif
 
@@ -762,8 +771,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 19 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 22 nibs.
   struct nib {
+    /// Nib `ChangerAvatarViewController`.
+    static let changerAvatarViewController = _R.nib._ChangerAvatarViewController()
     /// Nib `CommentTableViewCell`.
     static let commentTableViewCell = _R.nib._CommentTableViewCell()
     /// Nib `CommentsViewController`.
@@ -788,6 +799,8 @@ struct R: Rswift.Validatable {
     static let recentCommentTableViewCell = _R.nib._RecentCommentTableViewCell()
     /// Nib `RegisterViewController`.
     static let registerViewController = _R.nib._RegisterViewController()
+    /// Nib `SearchViewController`.
+    static let searchViewController = _R.nib._SearchViewController()
     /// Nib `SlideMenuTableViewCell`.
     static let slideMenuTableViewCell = _R.nib._SlideMenuTableViewCell()
     /// Nib `SlideMenuViewController`.
@@ -802,6 +815,16 @@ struct R: Rswift.Validatable {
     static let template3TBVCell = _R.nib._Template3TBVCell()
     /// Nib `Template4TBVCell`.
     static let template4TBVCell = _R.nib._Template4TBVCell()
+    /// Nib `UserEventViewController`.
+    static let userEventViewController = _R.nib._UserEventViewController()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ChangerAvatarViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.changerAvatarViewController) instead")
+    static func changerAvatarViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.changerAvatarViewController)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "CommentTableViewCell", in: bundle)`
@@ -900,6 +923,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "SearchViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.searchViewController) instead")
+    static func searchViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.searchViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "SlideMenuTableViewCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.slideMenuTableViewCell) instead")
     static func slideMenuTableViewCell(_: Void = ()) -> UIKit.UINib {
@@ -955,6 +986,18 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "UserEventViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.userEventViewController) instead")
+    static func userEventViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.userEventViewController)
+    }
+    #endif
+
+    static func changerAvatarViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.changerAvatarViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
     static func commentTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CommentTableViewCell? {
       return R.nib.commentTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CommentTableViewCell
     }
@@ -1003,6 +1046,10 @@ struct R: Rswift.Validatable {
       return R.nib.registerViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
+    static func searchViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.searchViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
     static func slideMenuTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SlideMenuTableViewCell? {
       return R.nib.slideMenuTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SlideMenuTableViewCell
     }
@@ -1029,6 +1076,10 @@ struct R: Rswift.Validatable {
 
     static func template4TBVCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> Template4TBVCell? {
       return R.nib.template4TBVCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? Template4TBVCell
+    }
+
+    static func userEventViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.userEventViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
     fileprivate init() {}
@@ -1069,12 +1120,25 @@ struct _R: Rswift.Validatable {
       try _LoveViewController.validate()
       try _ProfileViewController.validate()
       try _RegisterViewController.validate()
+      try _SearchViewController.validate()
       try _SlideMenuViewController.validate()
       try _StartViewController.validate()
       try _Template1TBVCell.validate()
       try _Template2TBVCell.validate()
       try _Template3TBVCell.validate()
       try _Template4TBVCell.validate()
+      try _UserEventViewController.validate()
+    }
+
+    struct _ChangerAvatarViewController: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "ChangerAvatarViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
     }
 
     struct _CommentTableViewCell: Rswift.NibResourceType {
@@ -1147,6 +1211,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "link", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'link' is used in nib 'EventViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "menu", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'menu' is used in nib 'EventViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "search", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'search' is used in nib 'EventViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
@@ -1285,6 +1350,23 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _SearchViewController: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "SearchViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "back", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'back' is used in nib 'SearchViewController', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
     struct _SlideMenuTableViewCell: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "SlideMenuTableViewCell"
@@ -1403,6 +1485,23 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "count_comment", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'count_comment' is used in nib 'Template4TBVCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "count_view", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'count_view' is used in nib 'Template4TBVCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "template4", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'template4' is used in nib 'Template4TBVCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _UserEventViewController: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "UserEventViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "back", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'back' is used in nib 'UserEventViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }

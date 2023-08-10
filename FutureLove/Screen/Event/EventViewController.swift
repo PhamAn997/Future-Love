@@ -14,6 +14,7 @@ class EventViewController: BaseViewController {
     var dataDetail: [EventModel] = []
     
     
+    @IBOutlet weak var linkWebImage: UIImageView!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var keyboardScrollView: UIScrollView!
@@ -49,7 +50,26 @@ class EventViewController: BaseViewController {
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
         
         
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panTap))
+        linkWebImage.addGestureRecognizer(panGesture)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapLinkWeb))
+        linkWebImage.addGestureRecognizer(tap)
     }
+    @objc func panTap(sender: UIPanGestureRecognizer){
+        let tranlation = sender.translation(in: view)
+        if sender.state == .changed {
+            if let linkWebImage = sender.view {
+                linkWebImage.center.x += tranlation.x
+                linkWebImage.center.y += tranlation.y
+                sender.setTranslation(CGPoint.zero, in: view)
+            }
+        }
+    }
+    @objc func tapLinkWeb(sender: UITapGestureRecognizer) {
+        guard let url = URL(string: "http://datanomic.online/") else { return }
+        UIApplication.shared.open(url)
+    }
+    
     @IBAction func btnSlideMenu(_ sender: Any) {
         let vc = SlideMenuViewController(data: dataDetail)
         vc.modalPresentationStyle = .overFullScreen
@@ -140,14 +160,15 @@ extension EventViewController: UITableViewDataSource {
 
 extension EventViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let height = UIScreen.main.bounds.size.width * 200 / 390
-//        return height
-        return UITableView.automaticDimension
+        let height = UIScreen.main.bounds.size.width * 200 / 390
+        return height
+//        return UITableView.automaticDimension
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailEventsViewController(data: data)
         vc.index = dataDetail[indexPath.row].so_thu_tu_su_kien ?? -1
+        print( dataDetail[indexPath.row].so_thu_tu_su_kien ?? -1)
         vc.dataDetail = dataDetail[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -162,7 +183,7 @@ extension EventViewController: SlideMenuprotocol {
     
     func navigateDetailComment(at index: Int, dataEvent: EventModel) {
         let vc = DetailEventsViewController(data: data)
-        vc.index = index
+        vc.index = index + 1
         vc.dataDetail = dataEvent
         self.dismiss(animated: false)
         self.navigationController?.pushViewController(vc, animated: true)

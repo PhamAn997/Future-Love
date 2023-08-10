@@ -24,4 +24,12 @@ class ProfileAPI: BaseAPI<ProfileServiceConfiguration> {
             completionHandler(result)
         }
     }
+    func getUserEvent(id_user: Int,
+                      completionHandler: @escaping (Result<HomeModel, ServiceError>) -> Void) {
+        fetchData(configuration: .getUserEvent(id_user: id_user),
+                  responseType: HomeModel.self) { result in
+            completionHandler(result)
+        }
+    }
 }
+

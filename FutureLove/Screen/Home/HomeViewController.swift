@@ -8,13 +8,16 @@
 import UIKit
 import SETabView
 import AlamofireImage
+import DeviceKit
 
 class HomeViewController: UIViewController, SETabItemProvider {
-    var data: [Sukien] = []
+    
     var seTabBarItem: UITabBarItem? {
         return UITabBarItem(title: "", image: UIImage(named: "tab_home"), tag: 0)
     }
- 
+    var data: [Sukien] = []
+    var refreshControl: UIRefreshControl!
+  
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var viewBackground: UIView!
     @IBOutlet weak var homeTableView: UITableView!
@@ -27,14 +30,17 @@ class HomeViewController: UIViewController, SETabItemProvider {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         setupUI()
         callApiHome()
-      
+        
+        
     }
     
     func setupUI() {
+        hideKeyboardWhenTappedAround()
         homeTableView.delegate = self
         homeTableView.dataSource = self
         homeTableView.register(cellType: Template1TBVCell.self)
@@ -46,8 +52,18 @@ class HomeViewController: UIViewController, SETabItemProvider {
         if let url = URL(string: AppConstant.linkAvatar.asStringOrEmpty()){
             avatarImage.af.setImage(withURL: url)
         }
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Kéo để làm mới")
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        homeTableView.refreshControl = refreshControl
     }
     
+    @objc func refreshData() {
+        callApiHome()
+        self.homeTableView.reloadData()
+        refreshControl.endRefreshing()
+    }
     @IBAction func searchBtn(_ sender: Any) {
        
     }
@@ -110,14 +126,12 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height = tableView.frame.height / 3
-        //        UIScreen.main.bounds.size.width * 200 / 390
+        let height = UIScreen.main.bounds.size.width * 200 / 390
         return height
-//        return UITableView.automaticDimension
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = EventViewController(data: data[indexPath.row].id_toan_bo_su_kien ?? 0)
-//        vc.data = data[indexPath.row].id_toan_bo_su_kien ?? 0
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

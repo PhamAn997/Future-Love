@@ -186,6 +186,29 @@
                                 <constraint firstAttribute="height" constant="43" id="iJU-h0-MHW"/>
                             </constraints>
                         </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uyk-1X-ag0">
+                            <rect key="frame" x="124" y="34.666666666666657" width="238" height="43"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ioj-yz-sKt">
+                                    <rect key="frame" x="0.0" y="0.0" width="79.333333333333329" height="43"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                    <connections>
+                                        <action selector="userEventBtn:" destination="-1" eventType="touchUpInside" id="3VM-Ne-XTJ"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0l6-hb-qTR">
+                                    <rect key="frame" x="79.333333333333343" y="0.0" width="79.333333333333343" height="43"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWt-Xx-9XT">
+                                    <rect key="frame" x="158.66666666666669" y="0.0" width="79.333333333333314" height="43"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                </button>
+                            </subviews>
+                        </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBV-ki-dc5">
                             <rect key="frame" x="168" y="102.33333333333334" width="150" height="30"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -208,15 +231,19 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="uyk-1X-ag0" firstAttribute="bottom" secondItem="h4h-Wh-8Gc" secondAttribute="bottom" id="10x-Ta-pgh"/>
                         <constraint firstItem="2T4-O1-AX1" firstAttribute="top" secondItem="CU1-2g-ic4" secondAttribute="bottom" constant="8" id="69f-gc-ZxM"/>
                         <constraint firstItem="CU1-2g-ic4" firstAttribute="top" secondItem="QKg-LW-yps" secondAttribute="top" constant="12" id="EqD-gB-XyJ"/>
                         <constraint firstItem="h4h-Wh-8Gc" firstAttribute="centerY" secondItem="CU1-2g-ic4" secondAttribute="centerY" id="Eu6-ab-bKg"/>
+                        <constraint firstItem="uyk-1X-ag0" firstAttribute="top" secondItem="h4h-Wh-8Gc" secondAttribute="top" id="KCi-tJ-HcN"/>
                         <constraint firstAttribute="trailing" secondItem="h4h-Wh-8Gc" secondAttribute="trailing" constant="31" id="LcU-k6-61O"/>
                         <constraint firstItem="RBV-ki-dc5" firstAttribute="centerX" secondItem="h4h-Wh-8Gc" secondAttribute="centerX" id="N6O-yu-sNc"/>
                         <constraint firstItem="h4h-Wh-8Gc" firstAttribute="leading" secondItem="CU1-2g-ic4" secondAttribute="trailing" constant="20" id="SBd-5r-sKg"/>
                         <constraint firstAttribute="height" constant="149" id="VPL-9w-9yk"/>
                         <constraint firstItem="2T4-O1-AX1" firstAttribute="leading" secondItem="QKg-LW-yps" secondAttribute="leading" constant="20.5" id="fd8-rY-yEj"/>
+                        <constraint firstItem="uyk-1X-ag0" firstAttribute="leading" secondItem="h4h-Wh-8Gc" secondAttribute="leading" id="iqg-09-VGk"/>
                         <constraint firstItem="RBV-ki-dc5" firstAttribute="centerY" secondItem="2T4-O1-AX1" secondAttribute="centerY" id="sQB-1u-Ai5"/>
+                        <constraint firstItem="uyk-1X-ag0" firstAttribute="trailing" secondItem="h4h-Wh-8Gc" secondAttribute="trailing" id="vKn-Qq-NS9"/>
                         <constraint firstItem="CU1-2g-ic4" firstAttribute="leading" secondItem="QKg-LW-yps" secondAttribute="leading" constant="16" id="vLj-nf-ePc"/>
                     </constraints>
                 </view>
@@ -289,7 +316,7 @@
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZBf-4n-hXr">
                     <rect key="frame" x="16" y="432.66666666666674" width="361" height="385.33333333333326"/>
-                    <color key="backgroundColor" red="0.94117647059999998" green="0.63921568630000003" blue="0.74901960779999999" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="tr_cornerRadius">

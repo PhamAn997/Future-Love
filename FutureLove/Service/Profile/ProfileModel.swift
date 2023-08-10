@@ -22,7 +22,7 @@ struct CommentUser : Codable {
     let link_nam_goc : String?
     let link_nu_goc : String?
     let noi_dung_cmt : String?
-    let so_thu_tu_su_kien : Double?
+    let so_thu_tu_su_kien : Int?
     let thoi_gian_release : String?
     let user_name : String?
 }

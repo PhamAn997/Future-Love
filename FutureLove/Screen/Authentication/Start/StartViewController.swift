@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DeviceKit
 
 class StartViewController: UIViewController {
 
@@ -13,6 +14,10 @@ class StartViewController: UIViewController {
     @IBOutlet weak var luonSongImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let device = Device.current
+        let modelName = device.description
+        AppConstant.modelName = modelName
+        
         UIView.animate(withDuration: 3.0, animations: {
             self.luonSongImage.transform = CGAffineTransform(translationX: -150 , y: -200)
                 }) { _ in

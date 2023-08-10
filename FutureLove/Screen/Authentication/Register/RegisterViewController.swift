@@ -44,7 +44,7 @@ class RegisterViewController: UIViewController {
                                    user_name: userNameTextField.text.asStringOrEmpty(),
                                    link_avatar: linkImage,
                                    ip_register: AppConstant.IPAddress.asStringOrEmpty(),
-                                   device_register: AppConstant.deviceName) { result in
+                                   device_register: AppConstant.modelName ?? "iphone") { result in
             self.hideCustomeIndicator()
             switch result {
             case .success(let success):

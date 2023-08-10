@@ -18,6 +18,7 @@
                 <outlet property="backgroundView" destination="SMo-yZ-w8d" id="nvq-yX-coq"/>
                 <outlet property="detailTableView" destination="LhI-XV-goF" id="6h2-Xu-uAS"/>
                 <outlet property="keyboardScrollView" destination="Nad-xk-fB6" id="uQI-y4-vRO"/>
+                <outlet property="linkWebImage" destination="bh2-C2-lXK" id="obU-5j-VAZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -150,6 +151,18 @@
                         <constraint firstAttribute="trailing" secondItem="tBf-iW-asC" secondAttribute="trailing" id="kU4-WR-TvU"/>
                     </constraints>
                 </scrollView>
+                <imageView clipsSubviews="YES" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link" translatesAutoresizingMaskIntoConstraints="NO" id="bh2-C2-lXK">
+                    <rect key="frame" x="323" y="738" width="60" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Z41-wm-BtJ"/>
+                        <constraint firstAttribute="width" constant="60" id="fj7-4Y-a2r"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="tr_cornerRadius">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -158,9 +171,11 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5Cf-rn-MZU" secondAttribute="trailing" id="5Te-6p-TLb"/>
                 <constraint firstItem="5Cf-rn-MZU" firstAttribute="top" secondItem="nV5-zz-RrM" secondAttribute="bottom" constant="10" id="D3K-6h-iGz"/>
                 <constraint firstAttribute="trailing" secondItem="SMo-yZ-w8d" secondAttribute="trailing" id="Dnt-01-kNO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="bh2-C2-lXK" secondAttribute="bottom" constant="30" id="H3B-gJ-a0Z"/>
                 <constraint firstItem="SMo-yZ-w8d" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NyP-VY-hGm"/>
                 <constraint firstItem="tBf-iW-asC" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" id="Svx-K1-3p5"/>
                 <constraint firstItem="nV5-zz-RrM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aJz-7s-K9p"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bh2-C2-lXK" secondAttribute="trailing" constant="10" id="b8a-H5-OC0"/>
                 <constraint firstItem="5Cf-rn-MZU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bAI-0Z-Zww"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Nad-xk-fB6" secondAttribute="trailing" id="dg8-sa-KOT"/>
                 <constraint firstItem="Nad-xk-fB6" firstAttribute="top" secondItem="nV5-zz-RrM" secondAttribute="bottom" constant="10" id="dl9-u8-pGv"/>
@@ -176,6 +191,7 @@
         </view>
     </objects>
     <resources>
+        <image name="link" width="512" height="512"/>
         <image name="menu" width="32" height="32"/>
         <image name="search" width="20" height="20.333333969116211"/>
         <systemColor name="systemBackgroundColor">

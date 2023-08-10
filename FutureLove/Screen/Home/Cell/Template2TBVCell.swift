@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class Template2TBVCell: UITableViewCell {
 
@@ -15,6 +16,8 @@ class Template2TBVCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var imageRight: UIImageView!
+    @IBOutlet weak var imageLeft: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,9 +29,12 @@ class Template2TBVCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func configCell(model: Sukien) {
-//        if let url = URL(string: model.link_da_swap.asStringOrEmpty()){
-//            titleImage.af.setImage(withURL: url)
-//        }
+        if let url = URL(string: model.link_da_swap.asStringOrEmpty()){
+            imageLeft.af.setImage(withURL: url)
+        }
+        if let url = URL(string: model.link_da_swap.asStringOrEmpty()){
+            imageRight.af.setImage(withURL: url)
+        }
         descriptionLabel.text = model.noi_dung_su_kien
         nameLabel.text = model.ten_su_kien
      
@@ -41,9 +47,12 @@ class Template2TBVCell: UITableViewCell {
 
     }
     func configCellDetail(model: EventModel) {
-//        if let url = URL(string: model.link_da_swap.asStringOrEmpty()){
-//            avatarImage.af.setImage(withURL: url)
-//        }
+        if let url = URL(string: model.link_da_swap.asStringOrEmpty()){
+            imageLeft.af.setImage(withURL: url)
+        }
+        if let url = URL(string: model.link_da_swap.asStringOrEmpty()){
+            imageRight.af.setImage(withURL: url)
+        }
         descriptionLabel.text = model.noi_dung_su_kien
         nameLabel.text = model.ten_su_kien
      

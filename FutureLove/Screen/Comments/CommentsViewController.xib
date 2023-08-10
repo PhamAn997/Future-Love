@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="commentTableView" destination="pgW-WC-u56" id="Y2K-SH-b3N"/>
                 <outlet property="profileImage" destination="g3R-oh-Hcp" id="HWl-4a-XtS"/>
+                <outlet property="searchTextField" destination="mdX-gp-YnC" id="Z3v-S4-Wsh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewBackGround" destination="BBC-KM-aPX" id="QXH-ox-QGQ"/>
             </connections>

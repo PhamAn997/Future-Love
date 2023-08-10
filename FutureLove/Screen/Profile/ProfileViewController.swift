@@ -8,7 +8,9 @@ import UIKit
 import AlamofireImage
 
 class ProfileViewController: UIViewController {
+    
     var dataRecentCommemt: [CommentUser] = []
+    var dataUserEvent: [Sukien] = []
     @IBOutlet weak var recentCommentTableView: UITableView!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var noCommentLabel: UILabel!
@@ -28,13 +30,13 @@ class ProfileViewController: UIViewController {
         setupUI()
         callAPIRecentComment()
         callApiProfile()
-        
+        callAPIUserEvent()
     }
     func setupUI() {
         self.navigationController?.isNavigationBarHidden = true
         recentCommentTableView.delegate = self
         recentCommentTableView.dataSource = self
-        recentCommentTableView.register(cellType: RecentCommentTableViewCell.self)
+        recentCommentTableView.register(cellType: DetailCommentTableViewCell.self)
       
     }
     func callApiProfile() {
@@ -58,7 +60,7 @@ class ProfileViewController: UIViewController {
         ProfileAPI.shared.getRecentComment(id_user: AppConstant.userId ?? 0) { result in
             switch result {
             case .success(let success):
-                self.dataRecentCommemt = success.comment_user ?? []
+                self.dataRecentCommemt = success.comment_user?.reversed() ?? []
                 self.recentCommentTableView.reloadData()
                 if self.dataRecentCommemt.count == 0 {
                     self.noCommentLabel.isHidden = false
@@ -70,9 +72,25 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-    
+    func callAPIUserEvent() {
+        ProfileAPI.shared.getUserEvent(id_user: AppConstant.userId ?? 0 ) { result in
+            switch result {
+            case .success(let success):
+                let data = success.list_sukien?.compactMap {$0.sukien?.first }
+                self.dataUserEvent = data!
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: false)
+    }
+    
+    @IBAction func userEventBtn(_ sender: Any) {
+        let vc = UserEventViewController(nibName: "UserEventViewController", bundle: nil)
+        vc.data = self.dataUserEvent
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func LogOutBtn(_ sender: Any) {
@@ -89,10 +107,10 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentCommentTableViewCell", for: indexPath) as? RecentCommentTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCommentTableViewCell", for: indexPath) as? DetailCommentTableViewCell else {
             return UITableViewCell()
         }
-        cell.configCell(model: dataRecentCommemt[indexPath.row])
+        cell.configCellReComment(model: dataRecentCommemt[indexPath.row])
         return cell
         
         
@@ -106,7 +124,9 @@ extension ProfileViewController: UITableViewDelegate{
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let vc = DetailEventsViewController(data: dataRecentCommemt[indexPath.row].id_toan_bo_su_kien ?? -1 )
+        vc.index = dataRecentCommemt[indexPath.row].so_thu_tu_su_kien ?? -1
+        self.navigationController?.pushViewController(vc, animated: false)
     }
     
 }

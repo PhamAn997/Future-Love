@@ -19,7 +19,9 @@ class CommentsViewController: UIViewController , SETabItemProvider {
     var isLoadingData = false
     var maxPage: Int = 0
     var currentPage: Int = 1
+    var refreshControl: UIRefreshControl!
     
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var viewBackGround: UIView!
     @IBOutlet weak var commentTableView: UITableView!
@@ -32,9 +34,11 @@ class CommentsViewController: UIViewController , SETabItemProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         setupUI()
         getComment(page: currentPage)
         callAPIgetdataComment()
+        searchTextField.delegate = self
         
     }
     
@@ -47,7 +51,18 @@ class CommentsViewController: UIViewController , SETabItemProvider {
         if let url = URL(string: AppConstant.linkAvatar.asStringOrEmpty()) {
             profileImage.af.setImage(withURL: url)
         }
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Kéo để làm mới")
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        commentTableView.refreshControl = refreshControl
     }
+    @objc func refreshData() {
+        callAPIgetdataComment()
+        self.commentTableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
     @IBAction func profileBtn(_ sender: Any) {
         self.navigationController?.pushViewController(ProfileViewController(nibName: "ProfileViewController", bundle: nil), animated: true)
     }
@@ -111,7 +126,7 @@ extension CommentsViewController: UITableViewDelegate {
             loadMoreData()
         }
     }
-
+    
     func loadMoreData() {
         currentPage += 1
         guard currentPage <= maxPage else { return }
@@ -127,7 +142,23 @@ extension CommentsViewController: UITableViewDelegate {
             }
             self.isLoadingData = false
         }
-        
-        
+    }
+}
+
+extension CommentsViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        guard self.searchTextField.text == "" else {return false}
+        CommentAPI.shared.getSearchComment(word: self.searchTextField.text!) { result in
+            switch result {
+            case .success(let success):
+                let data = success.list_sukien?.first?.sukien
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+        return true
+
     }
 }

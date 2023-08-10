@@ -16,6 +16,8 @@ class DetailEventsViewController: UIViewController {
     var dataIp : [IPAddress] = []
     var fullscreenView: UIView?
     var downloadButton: UIButton?
+    //    var initialTransform: CGAffineTransform = .identity
+    var initialImageScale: CGFloat = 1.0
     
     @IBOutlet weak var detailImage: UIImageView!
     @IBOutlet weak var nameDetailLabel: UILabel!
@@ -50,7 +52,6 @@ class DetailEventsViewController: UIViewController {
         callApiComentEvent()
         keyboard()
         commentTextField.delegate = self
-        print(index)
     }
     
     func setupUI() {
@@ -78,7 +79,7 @@ class DetailEventsViewController: UIViewController {
         DetailAPI.shared.getDetailEvent(idsukien: data) { result in
             switch result {
             case .success(let success):
-                let data = success.sukien?[self.index]
+                let data = success.sukien?[self.index - 1 ]
                 self.titleLabel.text = data?.ten_su_kien ?? ""
                 
                 if let url = URL(string: data?.link_da_swap ?? ""){
@@ -108,7 +109,7 @@ class DetailEventsViewController: UIViewController {
     }
     
     func callApiComentEvent() {
-        DetailAPI.shared.getCommentEvent(id: index + 1,
+        DetailAPI.shared.getCommentEvent(id: index ,
                                          id_toan_bo_su_kien: "\(data)") { result in
             switch result {
             case .success(let success):
@@ -124,9 +125,9 @@ class DetailEventsViewController: UIViewController {
         guard commentTextField.text != "" else { return }
         DetailAPI.shared.postComments(noi_dung_cmt: commentTextField.text.asStringOrEmpty(),
                                       id_toan_bo_su_kien: "\(data) ",
-                                      device_cmt: AppConstant.deviceName,
+                                      device_cmt: AppConstant.modelName ?? "iphone",
                                       ipComment: dataIp.first?.ip ?? "",
-                                      imageattach: AppConstant.linkAvatar.asStringOrEmpty(),
+                                      imageattach: "",
                                       id_user: "\(AppConstant.userId ?? 0)",
                                       so_thu_tu_su_kien : "\(index)",
                                       location: dataIp.first?.city ?? "") { result in
@@ -147,16 +148,17 @@ class DetailEventsViewController: UIViewController {
         guard let tappedImageView = sender.view as? UIImageView else {
             return
         }
-       
+        
         fullscreenView = UIView(frame: view.bounds)
         fullscreenView?.backgroundColor = .black
         fullscreenView?.alpha = 0
-     
+        
         let zoomedImageView = UIImageView(frame: tappedImageView.frame)
         zoomedImageView.image = tappedImageView.image
         zoomedImageView.contentMode = .scaleAspectFit
         fullscreenView?.addSubview(zoomedImageView)
-        
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchGestureHandler))
+        fullscreenView?.addGestureRecognizer(pinchGesture)
         
         downloadButton = UIButton(type: .custom)
         downloadButton?.setTitle("Tải xuống", for: .normal)
@@ -168,18 +170,32 @@ class DetailEventsViewController: UIViewController {
         closeButton.setTitle("Đóng", for: .normal)
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         fullscreenView?.addSubview(closeButton)
-     
+        
         if let fullscreenView = fullscreenView {
             view.addSubview(fullscreenView)
         }
         
-     
+        
         UIView.animate(withDuration: 0.3) {
             self.fullscreenView?.alpha = 1
             zoomedImageView.frame = UIScreen.main.bounds
         }
     }
     
+    @objc func pinchGestureHandler(sender: UIPinchGestureRecognizer){
+        if sender.state == .began {
+            initialImageScale = fullscreenView!.transform.a
+        }
+        if sender.state == .changed {
+            let scale = sender.scale
+            let scaledValue = max(min(initialImageScale * scale, 2.0), initialImageScale)
+            fullscreenView?.transform = CGAffineTransform(scaleX: scaledValue, y: scaledValue)
+        }
+        
+        if sender.state == .ended {
+            fullscreenView?.transform = CGAffineTransform(scaleX: initialImageScale, y: initialImageScale)
+        }
+    }
     @objc func closeButtonTapped() {
         // Đóng ảnh phóng to
         dismissFullscreenImage()
@@ -269,11 +285,11 @@ extension DetailEventsViewController: UITextFieldDelegate {
         guard commentTextField.text != "" else { return false}
         DetailAPI.shared.postComments(noi_dung_cmt: commentTextField.text.asStringOrEmpty(),
                                       id_toan_bo_su_kien: "\(data) ",
-                                      device_cmt: AppConstant.deviceName,
+                                      device_cmt: AppConstant.modelName ?? "iphone",
                                       ipComment: dataIp.first?.ip ?? "",
                                       imageattach: AppConstant.linkAvatar.asStringOrEmpty(),
                                       id_user: "\(AppConstant.userId ?? 0)",
-                                      so_thu_tu_su_kien : "\(index + 1)",
+                                      so_thu_tu_su_kien : "\(index)",
                                       location: dataIp.first?.city ?? "") { result in
             switch result {
             case .success:

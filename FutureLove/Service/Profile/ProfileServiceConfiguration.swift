@@ -11,7 +11,8 @@ import Alamofire
 
 enum ProfileServiceConfiguration {
     case getRecentComment(id_user: Int)
-    case getProfile(id_user:Int)
+    case getProfile(id_user: Int)
+    case getUserEvent(id_user: Int)
     
 }
 
@@ -23,6 +24,8 @@ extension ProfileServiceConfiguration: Configuration {
             return Constant.Server.baseAPIURL
         case .getProfile:
             return Constant.Server.baseAPIURL
+        case .getUserEvent:
+            return Constant.Server.baseAPIURL
         }
     }
     
@@ -32,6 +35,8 @@ extension ProfileServiceConfiguration: Configuration {
             return "lovehistory/comment/user/\(id_user)"
         case .getProfile(let id_user):
             return "profile/\(id_user)"
+        case .getUserEvent(let id_user):
+            return "lovehistory/user/\(id_user)"
         }
     }
     
@@ -41,6 +46,8 @@ extension ProfileServiceConfiguration: Configuration {
             return .get
         case .getProfile:
             return .get
+        case .getUserEvent:
+            return .get
         }
     }
     
@@ -49,6 +56,8 @@ extension ProfileServiceConfiguration: Configuration {
         case .getRecentComment:
             return .requestPlain
         case .getProfile:
+            return .requestPlain
+        case .getUserEvent:
             return .requestPlain
         }
     }

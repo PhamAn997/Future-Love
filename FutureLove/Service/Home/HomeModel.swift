@@ -24,11 +24,12 @@ struct Sukien: Codable {
     let noi_dung_su_kien : String?
     let phantram_loading : Int?
     let real_time : String?
-    let so_thu_tu_su_kien : Double?
+    let so_thu_tu_su_kien : Int?
     let ten_nam : String?
     let ten_nu : String?
-    let ten_su_kien : String?}
+    let ten_su_kien : String?
 
+}
 
 
 struct UploadImage : Codable {

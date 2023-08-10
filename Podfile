@@ -12,7 +12,8 @@ target 'FutureLove' do
   pod 'DropDown'
   pod 'R.swift'
   pod 'SwiftLint', :inhibit_warnings => true
- 
+  pod 'DeviceKit', '~> 4.0'
+
   # Network
   pod 'AlamofireImage', '~> 4.1'
   pod 'SETabView'
