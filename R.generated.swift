@@ -366,12 +366,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 41 images.
+  /// This `R.image` struct is generated, and contains static references to 42 images.
   struct image {
     /// Image `Template3`.
     static let template3 = Rswift.ImageResource(bundle: R.hostingBundle, name: "Template3")
     /// Image `addEvent`.
     static let addEvent = Rswift.ImageResource(bundle: R.hostingBundle, name: "addEvent")
+    /// Image `add_image`.
+    static let add_image = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_image")
     /// Image `back`.
     static let back = Rswift.ImageResource(bundle: R.hostingBundle, name: "back")
     /// Image `backgroudLogin`.
@@ -462,6 +464,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "addEvent", bundle: ..., traitCollection: ...)`
     static func addEvent(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.addEvent, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "add_image", bundle: ..., traitCollection: ...)`
+    static func add_image(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.add_image, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1189,10 +1198,12 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "add_image", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'add_image' is used in nib 'DetailEventsViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "back", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'back' is used in nib 'DetailEventsViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "count_comment", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'count_comment' is used in nib 'DetailEventsViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "count_view", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'count_view' is used in nib 'DetailEventsViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "logo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logo' is used in nib 'DetailEventsViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "love_left", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'love_left' is used in nib 'DetailEventsViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "send", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'send' is used in nib 'DetailEventsViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "template1", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'template1' is used in nib 'DetailEventsViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {

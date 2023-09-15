@@ -18,19 +18,22 @@ class DetailEventsViewController: UIViewController {
     var downloadButton: UIButton?
     //    var initialTransform: CGAffineTransform = .identity
     var initialImageScale: CGFloat = 1.0
+    var imageLink : String = ""
     
     @IBOutlet weak var detailImage: UIImageView!
     @IBOutlet weak var nameDetailLabel: UILabel!
     @IBOutlet weak var countView: UIButton!
     @IBOutlet weak var countComment: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var keyboardScroll: UIScrollView!
+    @IBOutlet weak var postCommentBtn: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var avartarImage: UIImageView!
     @IBOutlet weak var detailEventTableView: UITableView!
+    @IBOutlet weak var hiddenImage: UIView!
+    @IBOutlet weak var commentImage: UIImageView!
     
     init(data: Int ) {
         self.data = data
@@ -52,6 +55,7 @@ class DetailEventsViewController: UIViewController {
         callApiComentEvent()
         keyboard()
         commentTextField.delegate = self
+        print(imageLink)
     }
     
     func setupUI() {
@@ -61,9 +65,9 @@ class DetailEventsViewController: UIViewController {
         detailEventTableView.register(cellType: DetailCommentTableViewCell.self)
         
         
-        if let url = URL(string: AppConstant.linkAvatar.asStringOrEmpty()){
-            avartarImage.af.setImage(withURL: url)
-        }
+       
+        let tapImage = UITapGestureRecognizer(target: self, action: #selector(selectImageTapped))
+        avartarImage.addGestureRecognizer(tapImage)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         detailImage.addGestureRecognizer(tapGesture)
@@ -122,12 +126,12 @@ class DetailEventsViewController: UIViewController {
     }
     
     @IBAction func postCommentBtn(_ sender: Any) {
-        guard commentTextField.text != "" else { return }
+//        guard commentTextField.text != "" else { return }
         DetailAPI.shared.postComments(noi_dung_cmt: commentTextField.text.asStringOrEmpty(),
                                       id_toan_bo_su_kien: "\(data) ",
                                       device_cmt: AppConstant.modelName ?? "iphone",
                                       ipComment: dataIp.first?.ip ?? "",
-                                      imageattach: "",
+                                      imageattach: imageLink,
                                       id_user: "\(AppConstant.userId ?? 0)",
                                       so_thu_tu_su_kien : "\(index)",
                                       location: dataIp.first?.city ?? "") { result in
@@ -139,8 +143,29 @@ class DetailEventsViewController: UIViewController {
             }
             self.callApiComentEvent()
             self.commentTextField.text = nil
+            self.hiddenImage.isHidden = true
+            self.imageLink = "" 
             self.detailEventTableView.reloadData()
         }
+    }
+    
+    
+    
+    @objc func selectImageTapped(sender: UITapGestureRecognizer) {
+        let ac = UIAlertController(title: "Select Image", message: "Select image from", preferredStyle: .actionSheet)
+        let cameraBtn = UIAlertAction(title: "Camera", style: .default) {_ in
+            self.showImagePicker(selectedSource: .camera)
+        }
+        let libaryBtn = UIAlertAction(title: "Libary", style: .default) { _ in
+            self.showImagePicker(selectedSource: .photoLibrary)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel){ _ in
+            self.dismiss(animated: true)
+        }
+        ac.addAction(cameraBtn)
+        ac.addAction(libaryBtn)
+        ac.addAction(cancel)
+        self.present(ac, animated: true)
     }
     
     // MARK: - ZoomIn ZoomOut Image
@@ -281,27 +306,75 @@ extension DetailEventsViewController: UITableViewDelegate{
 
 extension DetailEventsViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        guard commentTextField.text != "" else { return false}
-        DetailAPI.shared.postComments(noi_dung_cmt: commentTextField.text.asStringOrEmpty(),
-                                      id_toan_bo_su_kien: "\(data) ",
-                                      device_cmt: AppConstant.modelName ?? "iphone",
-                                      ipComment: dataIp.first?.ip ?? "",
-                                      imageattach: AppConstant.linkAvatar.asStringOrEmpty(),
-                                      id_user: "\(AppConstant.userId ?? 0)",
-                                      so_thu_tu_su_kien : "\(index)",
-                                      location: dataIp.first?.city ?? "") { result in
-            switch result {
-            case .success:
-                break
-            case .failure(let failure):
-                print(failure)
+        if commentTextField.text != "" || imageLink != "" {
+            DetailAPI.shared.postComments(noi_dung_cmt: commentTextField.text.asStringOrEmpty(),
+                                          id_toan_bo_su_kien: "\(data) ",
+                                          device_cmt: AppConstant.modelName ?? "iphone",
+                                          ipComment: dataIp.first?.ip ?? "",
+                                          imageattach: imageLink,
+                                          id_user: "\(AppConstant.userId ?? 0)",
+                                          so_thu_tu_su_kien : "\(index)",
+                                          location: dataIp.first?.city ?? "") { result in
+                switch result {
+                case .success:
+                    break
+                case .failure(let failure):
+                    print(failure)
+                }
+                self.callApiComentEvent()
+                self.commentTextField.text = nil
+                self.hiddenImage.isHidden = true
+                self.imageLink = ""
+                self.detailEventTableView.reloadData()
             }
-            self.callApiComentEvent()
-            self.commentTextField.text = nil
-            self.detailEventTableView.reloadData()
+            return true
         }
-        return true
-        
+        return false
+    }
+}
+
+extension DetailEventsViewController : UIPickerViewDelegate,
+                               UINavigationControllerDelegate,
+                                       UIImagePickerControllerDelegate {
+    func showImagePicker(selectedSource: UIImagePickerController.SourceType) {
+        guard UIImagePickerController.isSourceTypeAvailable(selectedSource) else {
+            return
+        }
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = selectedSource
+        imagePickerController.allowsEditing = false
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let selectedImage = info[.originalImage] as? UIImage {
+            picker.dismiss(animated: true)
+            commentImage.image = selectedImage
+            hiddenImage.isHidden = false
+            guard let imageData = commentImage.image!.jpegData(compressionQuality: 1.0) else {
+                return
+            }
+            self.postCommentBtn.isEnabled = false
+            HomeAPI.shared.uploadImage(key: "a07b4b5e0548a50248aecfb194645bac",
+                                       name: "image",
+                                       imageData: imageData) { result in
+                switch result {
+                case .success(let success):
+                    self.imageLink = success.data?.url ?? ""
+                    self.postCommentBtn.isEnabled = true
+
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        } else {
+            print("Image not found")
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }

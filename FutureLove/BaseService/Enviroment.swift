@@ -12,9 +12,9 @@ extension Enviroment {
     var baseURL: String {
         switch self {
         case .staging:
-            return "http://14.225.7.221:8989/"
+            return "https://sakaivn.online/"
         case .production:
-            return "http://14.225.7.221:8989/"
+            return "https://sakaivn.online/"
         }
     }
     

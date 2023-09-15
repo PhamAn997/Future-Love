@@ -58,6 +58,11 @@
 		6D466CF62A8219CE008F497B /* UserEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D466CF42A8219CD008F497B /* UserEventViewController.xib */; };
 		6D4ED84D2A8350BC00DE9612 /* ChangerAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4ED84B2A8350BC00DE9612 /* ChangerAvatarViewController.swift */; };
 		6D4ED84E2A8350BC00DE9612 /* ChangerAvatarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D4ED84C2A8350BC00DE9612 /* ChangerAvatarViewController.xib */; };
+		6DB791E52AAD8D1B00453EB4 /* ConfigurationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB791E02AAD8D1800453EB4 /* ConfigurationBase.swift */; };
+		6DB791E62AAD8D1B00453EB4 /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB791E12AAD8D1900453EB4 /* Configs.swift */; };
+		6DB791E72AAD8D1B00453EB4 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB791E22AAD8D1900453EB4 /* BaseService.swift */; };
+		6DB791E82AAD8D1B00453EB4 /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB791E32AAD8D1A00453EB4 /* Enviroment.swift */; };
+		6DB791E92AAD8D1B00453EB4 /* ServiceConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB791E42AAD8D1B00453EB4 /* ServiceConstant.swift */; };
 		6DFE9D012A6E5C7D000BB558 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D002A6E5C7D000BB558 /* AppDelegate.swift */; };
 		6DFE9D032A6E5C7D000BB558 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D022A6E5C7D000BB558 /* SceneDelegate.swift */; };
 		6DFE9D0A2A6E5C80000BB558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DFE9D092A6E5C80000BB558 /* Assets.xcassets */; };
@@ -84,11 +89,6 @@
 		6DFE9D792A6EE248000BB558 /* HomeServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D762A6EE248000BB558 /* HomeServiceConfiguration.swift */; };
 		6DFE9D7A2A6EE248000BB558 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D772A6EE248000BB558 /* HomeModel.swift */; };
 		6DFE9D7B2A6EE248000BB558 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D782A6EE248000BB558 /* HomeAPI.swift */; };
-		6DFE9D812A6EE663000BB558 /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D7C2A6EE662000BB558 /* Configs.swift */; };
-		6DFE9D822A6EE663000BB558 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D7D2A6EE663000BB558 /* BaseService.swift */; };
-		6DFE9D832A6EE663000BB558 /* ServiceConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D7E2A6EE663000BB558 /* ServiceConstant.swift */; };
-		6DFE9D842A6EE663000BB558 /* ConfigurationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D7F2A6EE663000BB558 /* ConfigurationBase.swift */; };
-		6DFE9D852A6EE663000BB558 /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D802A6EE663000BB558 /* Enviroment.swift */; };
 		6DFE9D882A6EE791000BB558 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D872A6EE791000BB558 /* BaseViewController.swift */; };
 		6DFE9D8D2A6EE7EB000BB558 /* StackSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D8B2A6EE7EB000BB558 /* StackSpec.swift */; };
 		6DFE9D8E2A6EE7EB000BB558 /* LayoutSpec+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE9D8C2A6EE7EB000BB558 /* LayoutSpec+Protocols.swift */; };
@@ -167,6 +167,11 @@
 		6D466CF42A8219CD008F497B /* UserEventViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserEventViewController.xib; sourceTree = "<group>"; };
 		6D4ED84B2A8350BC00DE9612 /* ChangerAvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangerAvatarViewController.swift; sourceTree = "<group>"; };
 		6D4ED84C2A8350BC00DE9612 /* ChangerAvatarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangerAvatarViewController.xib; sourceTree = "<group>"; };
+		6DB791E02AAD8D1800453EB4 /* ConfigurationBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationBase.swift; sourceTree = "<group>"; };
+		6DB791E12AAD8D1900453EB4 /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
+		6DB791E22AAD8D1900453EB4 /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		6DB791E32AAD8D1A00453EB4 /* Enviroment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
+		6DB791E42AAD8D1B00453EB4 /* ServiceConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConstant.swift; sourceTree = "<group>"; };
 		6DFE9CFD2A6E5C7D000BB558 /* FutureLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FutureLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DFE9D002A6E5C7D000BB558 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DFE9D022A6E5C7D000BB558 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,11 +200,6 @@
 		6DFE9D762A6EE248000BB558 /* HomeServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeServiceConfiguration.swift; sourceTree = "<group>"; };
 		6DFE9D772A6EE248000BB558 /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		6DFE9D782A6EE248000BB558 /* HomeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
-		6DFE9D7C2A6EE662000BB558 /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
-		6DFE9D7D2A6EE663000BB558 /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
-		6DFE9D7E2A6EE663000BB558 /* ServiceConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConstant.swift; sourceTree = "<group>"; };
-		6DFE9D7F2A6EE663000BB558 /* ConfigurationBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationBase.swift; sourceTree = "<group>"; };
-		6DFE9D802A6EE663000BB558 /* Enviroment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
 		6DFE9D872A6EE791000BB558 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		6DFE9D8B2A6EE7EB000BB558 /* StackSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackSpec.swift; sourceTree = "<group>"; };
 		6DFE9D8C2A6EE7EB000BB558 /* LayoutSpec+Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LayoutSpec+Protocols.swift"; sourceTree = "<group>"; };
@@ -583,11 +583,11 @@
 		6DFE9D692A6EE207000BB558 /* BaseService */ = {
 			isa = PBXGroup;
 			children = (
-				6DFE9D7D2A6EE663000BB558 /* BaseService.swift */,
-				6DFE9D7C2A6EE662000BB558 /* Configs.swift */,
-				6DFE9D7F2A6EE663000BB558 /* ConfigurationBase.swift */,
-				6DFE9D802A6EE663000BB558 /* Enviroment.swift */,
-				6DFE9D7E2A6EE663000BB558 /* ServiceConstant.swift */,
+				6DB791E22AAD8D1900453EB4 /* BaseService.swift */,
+				6DB791E12AAD8D1900453EB4 /* Configs.swift */,
+				6DB791E02AAD8D1800453EB4 /* ConfigurationBase.swift */,
+				6DB791E32AAD8D1A00453EB4 /* Enviroment.swift */,
+				6DB791E42AAD8D1B00453EB4 /* ServiceConstant.swift */,
 			);
 			path = BaseService;
 			sourceTree = "<group>";
@@ -854,11 +854,13 @@
 				6D39AED72A7592E500C63E72 /* ProfileAPI.swift in Sources */,
 				6DFE9DA22A6F6DF8000BB558 /* Optional+Extension.swift in Sources */,
 				6DFE9D9F2A6F6DF8000BB558 /* String+Extension.swift in Sources */,
+				6DB791E52AAD8D1B00453EB4 /* ConfigurationBase.swift in Sources */,
 				6D30A5682A7A3E7900814997 /* Template3TBVCell.swift in Sources */,
 				6D07E33A2A7105C7005D960A /* LoginAPI.swift in Sources */,
 				6DFE9D192A6E5DC9000BB558 /* LoginViewController.swift in Sources */,
+				6DB791E82AAD8D1B00453EB4 /* Enviroment.swift in Sources */,
 				6DFE9D8E2A6EE7EB000BB558 /* LayoutSpec+Protocols.swift in Sources */,
-				6DFE9D832A6EE663000BB558 /* ServiceConstant.swift in Sources */,
+				6DB791E72AAD8D1B00453EB4 /* BaseService.swift in Sources */,
 				6D07E2FC2A6FC118005D960A /* LoveServiceConfiguration.swift in Sources */,
 				6D1454402A7279BE0020D646 /* ProfileViewController.swift in Sources */,
 				6DFE9D572A6E7EF3000BB558 /* HomeViewController.swift in Sources */,
@@ -866,17 +868,15 @@
 				6DFE9DA12A6F6DF8000BB558 /* UIViewController+Extension.swift in Sources */,
 				6D07E3422A710880005D960A /* FogotPassViewController.swift in Sources */,
 				6D07E3052A7004A3005D960A /* TabbarViewController.swift in Sources */,
-				6DFE9D822A6EE663000BB558 /* BaseService.swift in Sources */,
+				6DB791E62AAD8D1B00453EB4 /* Configs.swift in Sources */,
 				6DFE9DA42A6F6DF8000BB558 /* UIFont+Extension.swift in Sources */,
 				6DFE9DAC2A6F6F47000BB558 /* NSMutableAttributedString.swift in Sources */,
 				6DFE9DA72A6F6DF8000BB558 /* UITextField+Extension.swift in Sources */,
 				6DFE9DA32A6F6DF8000BB558 /* Int+Extension.swift in Sources */,
 				6D07E3362A70F35B005D960A /* RegisterModel.swift in Sources */,
-				6DFE9D842A6EE663000BB558 /* ConfigurationBase.swift in Sources */,
 				6DFE9D7B2A6EE248000BB558 /* HomeAPI.swift in Sources */,
 				6D07E33E2A7105FE005D960A /* LoginServiceConfiguration.swift in Sources */,
 				6DFE9D522A6E766C000BB558 /* RegisterViewController.swift in Sources */,
-				6DFE9D812A6EE663000BB558 /* Configs.swift in Sources */,
 				3D306A342A72C31E00CE4AD0 /* LoadingView.swift in Sources */,
 				6D39AED22A742FD700C63E72 /* SlideMenuTableViewCell.swift in Sources */,
 				6D4ED84D2A8350BC00DE9612 /* ChangerAvatarViewController.swift in Sources */,
@@ -886,7 +886,6 @@
 				6D07E33C2A7105D5005D960A /* LoginModel.swift in Sources */,
 				6D39AEDF2A75992700C63E72 /* RecentCommentTableViewCell.swift in Sources */,
 				6DFE9D8D2A6EE7EB000BB558 /* StackSpec.swift in Sources */,
-				6DFE9D852A6EE663000BB558 /* Enviroment.swift in Sources */,
 				6DFE9DA52A6F6DF8000BB558 /* UICollectionView+Extension.swift in Sources */,
 				6D07E3002A6FC164005D960A /* LoveAPI.swift in Sources */,
 				6DFE9D792A6EE248000BB558 /* HomeServiceConfiguration.swift in Sources */,
@@ -903,6 +902,7 @@
 				6D07E3382A70F371005D960A /* RegisterServiceConfiguration.swift in Sources */,
 				6DFE9D7A2A6EE248000BB558 /* HomeModel.swift in Sources */,
 				6D07E32D2A70D4C1005D960A /* DetailAPI.swift in Sources */,
+				6DB791E92AAD8D1B00453EB4 /* ServiceConstant.swift in Sources */,
 				6D466CF02A8210CC008F497B /* SearchViewController.swift in Sources */,
 				6DFE9DA92A6F6DF8000BB558 /* UIView+Extension.swift in Sources */,
 				6D07E3342A70F331005D960A /* RegisterAPI.swift in Sources */,

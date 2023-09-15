@@ -16,6 +16,8 @@ class DetailCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var deviceLabel: UILabel!
+    @IBOutlet weak var hiddenView: UIView!
+    @IBOutlet weak var commentImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +37,14 @@ class DetailCommentTableViewCell: UITableViewCell {
         descriptionLabel.text = model.noi_dung_cmt
         locationLabel.text = "IP: \(model.dia_chi_ip ?? "") - \(model.location ?? "")"
         deviceLabel.text = "Device: \(model.device_cmt ?? "")"
+        if model.imageattach == "" {
+            hiddenView.isHidden = true
+        } else {
+            hiddenView.isHidden = false
+            if let url = URL(string: model.imageattach.asStringOrEmpty()) {
+                commentImage.af.setImage(withURL: url)
+            }
+        }
         
         let dateString = model.thoi_gian_release.asStringOrEmpty()
         let dateFormatter = DateFormatter()
@@ -70,6 +80,15 @@ class DetailCommentTableViewCell: UITableViewCell {
         locationLabel.text = "IP: \(model.dia_chi_ip ?? "") - \(model.location ?? "")"
         deviceLabel.text = "Device: \(model.device_cmt ?? "")"
         
+        if model.imageattach == "" {
+            hiddenView.isHidden = true
+        } else {
+            hiddenView.isHidden = false
+            if let url = URL(string: model.imageattach.asStringOrEmpty()) {
+                commentImage.af.setImage(withURL: url)
+            }
+        }
+        
         let dateString = model.thoi_gian_release.asStringOrEmpty()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -103,6 +122,14 @@ class DetailCommentTableViewCell: UITableViewCell {
         descriptionLabel.text = model.noi_dung_cmt
         locationLabel.text = "IP: \(model.dia_chi_ip ?? "")"
         deviceLabel.text = "Device: \(model.device_cmt ?? "")"
+        if model.imageattach == "" {
+            hiddenView.isHidden = true
+        } else {
+            hiddenView.isHidden = false
+            if let url = URL(string: model.imageattach.asStringOrEmpty()) {
+                commentImage.af.setImage(withURL: url)
+            }
+        }
         
         let dateString = model.thoi_gian_release.asStringOrEmpty()
         let dateFormatter = DateFormatter()
